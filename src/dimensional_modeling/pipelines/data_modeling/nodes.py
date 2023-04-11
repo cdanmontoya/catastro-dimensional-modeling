@@ -35,6 +35,8 @@ def get_dimension_ubicacion(est_manz: pd.DataFrame, nom_domc: pd.DataFrame, lote
     dimension_ubicacion_df = dimension_ubicacion_df.merge(nom_domc, how='inner',
                                                           on=['comuna', 'barrio'])
     dimension_ubicacion_df = dimension_ubicacion_df.merge(lote_pred, how='inner', on=['id_ubicacion'])
+    dimension_ubicacion_df = dimension_ubicacion_df.drop(columns=['id', 'poblacion_aprox_por_predio', 'poblacion_aprox', 'cant_predios', 'destinacion'])
+
     return dimension_ubicacion_df
 
 def get_hecho_manzanas(aux_estrato: pd.DataFrame, dim_estrato: pd.DataFrame, dim_dest: pd.DataFrame, est_manz: pd.DataFrame) -> pd.DataFrame:
