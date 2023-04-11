@@ -40,22 +40,22 @@ estrato_socioeconomico:
 clean_estadisticas_por_manzana:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/clean_estadisticas_por_manzana.csv
-  layer: data_cleaning
+  layer: cleaning
 
 clean_nomenclatura_domiciliaria:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/clean_nomenclatura_domiciliaria.csv
-  layer: data_cleaning
+  layer: cleaning
 
 clean_lote_del_predio:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/clean_lote_del_predio.csv
-  layer: data_cleaning
+  layer: cleaning
 
 auxiliar_estrato:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/auxiliar_estrato.csv
-  layer: data_cleaning
+  layer: cleaning
 
 dimension_estratos:
   type: pandas.SQLTableDataSet
@@ -63,7 +63,7 @@ dimension_estratos:
   table_name: dimension_estratos
   save_args:
     if_exists: replace
-  layer: data_modeling
+  layer: modeling
 
 dimension_destinaciones:
   type: pandas.SQLTableDataSet
@@ -71,15 +71,15 @@ dimension_destinaciones:
   table_name: dimension_destinaciones
   save_args:
     if_exists: replace
-  layer: data_modeling
+  layer: modeling
 
-dimension_ubicacion:
+dimension_ubicaciones:
   type: pandas.SQLTableDataSet
   credentials: dev_sql
-  table_name: dimension_ubicacion
+  table_name: dimension_ubicaciones
   save_args:
     if_exists: replace
-  layer: data_modeling
+  layer: modeling
 
 hecho_manzanas:
   type: pandas.SQLTableDataSet
@@ -87,4 +87,4 @@ hecho_manzanas:
   table_name: hecho_manzanas
   save_args:
     if_exists: replace
-  layer: data_modeling
+  layer: modeling
