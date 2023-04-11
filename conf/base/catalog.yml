@@ -14,3 +14,65 @@ estadisticas_por_manzana:
   type: pandas.CSVDataSet
   filepath: data/01_raw/estadisticas_por_manzana.csv
   layer: raw
+
+nomenclatura_domiciliaria:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/nomenclatura_domiciliaria.csv
+  layer: raw
+
+lote_del_predio:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/lote_del_predio.csv
+  layer: raw
+
+estrato_socioeconomico_api:
+  type: api.APIDataSet
+  url: https://opendata.arcgis.com/api/v3/datasets/b8a3d02933e24be595d561e77e89eec6_7/downloads/data?&spatialRefId=4326&where=1=1
+  params:
+    format: csv
+  layer: ingestion
+
+estrato_socioeconomico:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/estrato_socioeconomico.csv
+  layer: raw
+
+clean_estadisticas_por_manzana:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/clean_estadisticas_por_manzana.csv
+  layer: data_cleaning
+
+clean_nomenclatura_domiciliaria:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/clean_nomenclatura_domiciliaria.csv
+  layer: data_cleaning
+
+clean_lote_del_predio:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/clean_lote_del_predio.csv
+  layer: data_cleaning
+
+auxiliar_estrato:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/auxiliar_estrato.csv
+  layer: data_cleaning
+
+dimension_estratos:
+  type: pandas.CSVDataSet
+  filepath: data/08_reporting/dimension_estratos.csv
+  layer: data_modeling
+
+dimension_destinaciones:
+  type: pandas.CSVDataSet
+  filepath: data/08_reporting/dimension_destinaciones.csv
+  layer: data_modeling
+
+dimension_ubicacion:
+  type: pandas.CSVDataSet
+  filepath: data/08_reporting/dimension_ubicacion.csv
+  layer: data_modeling
+
+hecho_manzanas:
+  type: pandas.CSVDataSet
+  filepath: data/08_reporting/hecho_manzanas.csv
+  layer: data_modeling
