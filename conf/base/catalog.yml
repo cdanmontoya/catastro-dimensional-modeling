@@ -58,21 +58,33 @@ auxiliar_estrato:
   layer: data_cleaning
 
 dimension_estratos:
-  type: pandas.CSVDataSet
-  filepath: data/08_reporting/dimension_estratos.csv
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: dimension_estratos
+  save_args:
+    if_exists: replace
   layer: data_modeling
 
 dimension_destinaciones:
-  type: pandas.CSVDataSet
-  filepath: data/08_reporting/dimension_destinaciones.csv
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: dimension_destinaciones
+  save_args:
+    if_exists: replace
   layer: data_modeling
 
 dimension_ubicacion:
-  type: pandas.CSVDataSet
-  filepath: data/08_reporting/dimension_ubicacion.csv
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: dimension_ubicacion
+  save_args:
+    if_exists: replace
   layer: data_modeling
 
 hecho_manzanas:
-  type: pandas.CSVDataSet
-  filepath: data/08_reporting/hecho_manzanas.csv
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: hecho_manzanas
+  save_args:
+    if_exists: replace
   layer: data_modeling
