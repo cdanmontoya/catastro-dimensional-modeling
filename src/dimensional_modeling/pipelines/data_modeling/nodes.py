@@ -2,8 +2,8 @@
 This is a boilerplate pipeline 'data_modeling'
 generated using Kedro 0.18.7
 """
-import numpy as np
 import pandas as pd
+import numpy as np
 
 
 def get_dimension_estratos() -> pd.DataFrame:
@@ -36,7 +36,9 @@ def get_dimension_ubicaciones(est_manz: pd.DataFrame, nom_domc: pd.DataFrame, lo
                                                               how='inner',
                                                               on=['comuna', 'barrio'])
 
-    dimension_ubicaciones_df = dimension_ubicaciones_df.merge(lote_pred, how='inner', on=['id_ubicacion'])
+    dimension_ubicaciones_df = dimension_ubicaciones_df.merge(lote_pred, how='inner', on=['id_ubicacion']) \
+        [['id_ubicacion', 'comuna', 'barrio', 'manzana', 'nombre_barrio', 'nombre_comuna', 'latitud', 'longitud']]
+
     return dimension_ubicaciones_df
 
 
