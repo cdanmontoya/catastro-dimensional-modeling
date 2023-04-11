@@ -2,3 +2,15 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+estadisticas_por_manzana_api:
+  type: api.APIDataSet
+  url: https://opendata.arcgis.com/api/v3/datasets/b8a3d02933e24be595d561e77e89eec6_12/downloads/data?&spatialRefId=4326&where=1=1
+  params:
+    format: csv
+  layer: ingestion
+
+estadisticas_por_manzana:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/estadisticas_por_manzana.csv
+  layer: raw
