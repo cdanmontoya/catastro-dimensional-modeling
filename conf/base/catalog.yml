@@ -2,3 +2,89 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+estadisticas_por_manzana_api:
+  type: api.APIDataSet
+  url: https://opendata.arcgis.com/api/v3/datasets/b8a3d02933e24be595d561e77e89eec6_12/downloads/data?&spatialRefId=4326&where=1=1
+  params:
+    format: csv
+  layer: ingestion
+
+estadisticas_por_manzana:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/estadisticas_por_manzana.csv
+  layer: raw
+
+nomenclatura_domiciliaria:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/nomenclatura_domiciliaria.csv
+  layer: raw
+
+lote_del_predio:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/lote_del_predio.csv
+  layer: raw
+
+estrato_socioeconomico_api:
+  type: api.APIDataSet
+  url: https://opendata.arcgis.com/api/v3/datasets/b8a3d02933e24be595d561e77e89eec6_7/downloads/data?&spatialRefId=4326&where=1=1
+  params:
+    format: csv
+  layer: ingestion
+
+estrato_socioeconomico:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/estrato_socioeconomico.csv
+  layer: raw
+
+clean_estadisticas_por_manzana:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/clean_estadisticas_por_manzana.csv
+  layer: cleaning
+
+clean_nomenclatura_domiciliaria:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/clean_nomenclatura_domiciliaria.csv
+  layer: cleaning
+
+clean_lote_del_predio:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/clean_lote_del_predio.csv
+  layer: cleaning
+
+auxiliar_estrato:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/auxiliar_estrato.csv
+  layer: cleaning
+
+dimension_estratos:
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: dimension_estratos
+  save_args:
+    if_exists: replace
+  layer: modeling
+
+dimension_destinaciones:
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: dimension_destinaciones
+  save_args:
+    if_exists: replace
+  layer: modeling
+
+dimension_ubicaciones:
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: dimension_ubicaciones
+  save_args:
+    if_exists: replace
+  layer: modeling
+
+hecho_manzanas:
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: hecho_manzanas
+  save_args:
+    if_exists: replace
+  layer: modeling
